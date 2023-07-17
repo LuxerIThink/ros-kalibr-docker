@@ -1,32 +1,39 @@
 # Ros 2 Humble Docker
 
-It'a a easy to use Docker container package with ROS 2 Humble distro.
-Created mainly for Robotics and Autonomus Systems specialization
+It'a a easy to use ROS 2 Humble in Docker Compose for Linux system.
+
+Created for Robotics and Autonomus Systems specialization
 students in Poznan University of Technology.
 
 ## Key features
 
-- predifined Shared folder `/home/$USER/Shared/RiSA_Ros2Humble`
+- Easy way to launch
+- All apt-get packages in one place: packages.txt
+- All python libraries in one place: requirements.txt
 - Pre-sourced ROS
 - Working command hints
-- Easy way to add apt-get libraries in packages.txt
 
 ## Quick guide
 
 ### Build and run
 
-To build Dockerfile use this command:
+Build container:
+```
+docker compose build
+```
+ 
+Run container:
+```
+docker compose up
+```
 
+Attach console to container:
 ```
-./build
-```
-
-To run Docker container use this command:
-```
-./run
+docker exec ros2humble kitty
 ```
 
 ### Moving in container shortcuts
+(mostly kitty / linux shortcuts)
 
 Leave container:
 
@@ -52,7 +59,7 @@ or
 
 <kbd> <br> CTRL <br> </kbd> + <kbd> <br> SHIFT <br> </kbd> + <kbd> <br> <- <br> </kbd>
 
-### Hello World
+### ROS 2 Hello World
 
 In one tab run:
 
@@ -66,7 +73,8 @@ in another run:
 ros2 run turtlesim turtle_teleop_key
 ```
 
-While you are focused in second tab you can move turtle in new window. <br>
+While you are focused in second tab you can move turtle with arrows in new window. <br>
 <br>
-Rest instruction you find in offical ROS 2 Humble [Wiki](https://docs.ros.org/en/humble/index.html).
+
+Rest instruction you find in official [ROS 2 Humble Wiki](https://docs.ros.org/en/humble/index.html).
 
