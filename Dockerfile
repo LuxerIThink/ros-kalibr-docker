@@ -2,11 +2,13 @@ FROM osrf/ros:humble-desktop
 
 # Enviromental variables
 ENV DEBIAN_FRONTEND=noninteractive
+ENV DISTRO=humble
 ENV WORKDIR=/usr/src/ros2_ws
 
 WORKDIR $WORKDIR
 
-# Copy apt-get required libraries list
+# Setup linux environment
+# Install packages from packages.txt
 COPY packages.txt .
 RUN echo "Installing dependencies..." \
     && apt update -yq \
@@ -14,21 +16,20 @@ RUN echo "Installing dependencies..." \
     && apt-get install -yq --no-install-recommends $(cat packages.txt) \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy python required libraries list
+# Setup python environement
+# Install python libraries from requirements.txt
 COPY requirements.txt .
 RUN echo "Installing python libraries..." \
     && pip3 install --no-cache-dir -r requirements.txt
 
+# Create ros enviroment
 COPY user_files  .
-
-# Source Ros
-RUN echo ". install/setup.bash" >> ~/.bashrc \
-    && bash -c "source ~/.bashrc" \
-    && . /opt/ros/humble/setup.sh \
-    && colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release \
-    && bash -c "source /opt/ros/humble/setup.bash" \
-    && bash -c "source install/local_setup.bash"
-
-# Set settings
-RUN touch /root/.Xauthority
+RUN echo "Building ros environment ..." \
+    && echo ". install/setup.bash" >> ~/.bashrc \
+    && bash -c ". ~/.bashrc" \
+    && bash -c ". /opt/ros/$DISTRO/setup.sh" \
+    && colcon build --symlink-install \
+    && bash -c ". /opt/ros/$DISTRO/setup.bash" \
+    && bash -c ". install/setup.bash" \
+    && touch /root/.Xauthority
 
