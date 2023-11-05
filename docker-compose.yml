@@ -2,7 +2,8 @@ version: "3.8"
 services:
   ros2humble:
     container_name: ros2humble
-    image: ros2humble
+    build:
+      context: ./
     privileged: true
     shm_size: 1g
     environment:
