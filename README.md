@@ -17,12 +17,7 @@ students in Poznan University of Technology.
 
 ### Build and run
 
-Build container:
-```
-docker compose build
-```
- 
-Run container:
+Build and run container:
 ```
 docker compose up
 ```
