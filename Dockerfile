@@ -2,10 +2,8 @@ FROM osrf/ros:humble-desktop
 
 # Enviromental variables
 ENV DEBIAN_FRONTEND=noninteractive
-ENV DISTRO=humble
-ENV WORKDIR=/usr/src/ros2_ws
 
-WORKDIR $WORKDIR
+WORKDIR /usr/src/ros2_ws
 
 # Setup linux environment
 # Install packages from packages.txt
@@ -25,11 +23,9 @@ RUN echo "Installing python libraries..." \
 # Create ros enviroment
 COPY user_files  .
 RUN echo "Building ros environment ..." \
-    && echo ". install/setup.bash" >> ~/.bashrc \
-    && bash -c ". ~/.bashrc" \
-    && bash -c ". /opt/ros/$DISTRO/setup.sh" \
-    && colcon build --symlink-install \
-    && bash -c ". /opt/ros/$DISTRO/setup.bash" \
-    && bash -c ". install/setup.bash" \
+    && . /opt/ros/$ROS_DISTRO/setup.sh \
+    && colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=On \
+    && echo "source install/setup.bash" >> ~/.bashrc \
+    && bash -c "source ~/.bashrc" \
     && touch /root/.Xauthority
 
