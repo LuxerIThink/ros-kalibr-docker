@@ -1,4 +1,4 @@
-FROM osrf/ros:humble-desktop
+FROM osrf/ros:foxy-desktop
 
 # Enviromental variables
 ENV DEBIAN_FRONTEND=noninteractive
