@@ -11,6 +11,7 @@ mesa-utils
 nano
 net-tools
 netcat
+python3
 python3-pip
 python3-tk
 python3-vcstool
