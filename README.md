@@ -1,22 +1,17 @@
-# Ros Docker Template
+# Ros 1 Noetic Devel Docker Template
 
-This repository offers an easily deployable ROS Docker Template, streamlining your ROS development environment setup.
-
-## Available branches
-
-Choose from the following branches based on your ROS version needs:
-
-- ROS 2 Humble
+This repository offers an easily deployable ROS 1 Noetic Devel Docker Template, streamlining your ROS development environment setup.
 
 ## Key features
 
 Simplify your ROS Docker experience with these key features:
 
 - Launch with a single command `docker compose up`
+- Equipped with Python 3.8
 - Centralized management of apt-get packages in `packages.txt`
 - Convenient management of Python libraries in `requirements.txt`
 - Predefined workspace folder
-- Automated building of C++ packages
+- Automated build of C++ packages when building container
 - ROS pre-sourced for immediate use
 - Helpful ROS command hints provided
 - Fix for not showing ros windows: `fix_display.sh`
@@ -27,37 +22,52 @@ Simplify your ROS Docker experience with these key features:
 
 Start your container effortlessly:
 
-```
+```bash
 docker compose up
 ```
 
 Connect to the container's console:
 
-```
-docker exec ros2humble kitty
+```bash
+docker exec -it noetic kitty
 ```
 
-### ROS 2 Hello World
+### ROS 1 Hello World
 
 In one terminal, execute:
 
-```
-ros2 run turtlesim turtlesim_node
-```
-
-In another, run:
-
-```
-ros2 run turtlesim turtle_teleop_key
+```bash
+roscore
 ```
 
-With the second terminal active, control the turtle using arrow keys in a new window. <br>
+In another
 
-For further instructions, refer to the official [ROS 2 Humble Wiki](https://docs.ros.org/en/humble/index.html).
+```bash
+rosrun turtlesim turtlesim_node
+```
+
+and in last, run:
+
+```bash
+rosrun turtlesim turtle_teleop_key
+```
+
+With the last terminal active, control the turtle using arrow keys in a new window.
+
+For further instructions, refer to the official
+[ROS Wiki](https://wiki.ros.org/ROS/Tutorials)
+and
+[Example tutorials](https://github.com/ros/ros_tutorials/tree/noetic-devel)
+
+### Tests
+
+Tested with
+- above turtlebot hello world
+- packages: roscpp_tutorials and rospy_tutorials from [ros_tutorials](https://github.com/ros/ros_tutorials/tree/noetic-devel)
 
 ### Quick docker tips
 
-*(primarily for kitty/linux shortcuts)*
+primarily kitty/linux shortcuts
 
 Leave from container:
 
@@ -77,11 +87,11 @@ Open a new tab:
 
 Switch tabs:
 
-<kbd> <br> CTRL <br> </kbd> + <kbd> <br> SHIFT <br> </kbd> + <kbd> <br> -> <br> </kbd>
+<kbd> <br> CTRL <br> </kbd> + <kbd> <br> SHIFT <br> </kbd> + <kbd> <br> → <br> </kbd>
 
 or
 
-<kbd> <br> CTRL <br> </kbd> + <kbd> <br> SHIFT <br> </kbd> + <kbd> <br> <- <br> </kbd>
+<kbd> <br> CTRL <br> </kbd> + <kbd> <br> SHIFT <br> </kbd> + <kbd> <br> ← <br> </kbd>
 
 ### Purpose
 
