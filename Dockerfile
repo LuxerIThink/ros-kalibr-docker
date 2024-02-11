@@ -1,9 +1,9 @@
-FROM osrf/ros:foxy-desktop
+FROM osrf/ros:noetic-desktop
 
 # Enviromental variables
 ENV DEBIAN_FRONTEND=noninteractive
 
-WORKDIR /usr/src/ros2_ws
+WORKDIR /usr/src/ros1_ws
 
 # Setup linux environment
 # Install packages from packages.txt
@@ -24,8 +24,7 @@ RUN echo "Installing python libraries..." \
 COPY user_files  .
 RUN echo "Building ros environment ..." \
     && . /opt/ros/$ROS_DISTRO/setup.sh \
-    && colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=On \
-    && echo "source install/setup.bash" >> ~/.bashrc \
+    && catkin_make --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=On \
+    && echo "source devel/setup.bash" >> ~/.bashrc \
     && bash -c "source ~/.bashrc" \
     && touch /root/.Xauthority
-
