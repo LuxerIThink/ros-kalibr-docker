@@ -1,6 +1,6 @@
-# Ros 1 Noetic Devel Docker Template
+# Ros Kalibr Docker Template
 
-This repository offers an easily deployable ROS 1 Noetic Devel Docker Template, streamlining your ROS development environment setup.
+This repository offers an easily deployable ROS 1 Noetic Devel with Kalibr Docker Template, streamlining your ROS development environment setup.
 
 ## Key features
 
@@ -15,6 +15,7 @@ Simplify your ROS Docker experience with these key features:
 - ROS pre-sourced for immediate use
 - Helpful ROS command hints provided
 - Fix for not showing ros windows: `fix_display.sh`
+- Build in [Kalibr](https://github.com/ori-drs/kalibr)
 
 ## Quick guide
 
@@ -32,66 +33,9 @@ Connect to the container's console:
 docker exec -it noetic kitty
 ```
 
-### ROS 1 Hello World
+### License
 
-In one terminal, execute:
-
-```bash
-roscore
-```
-
-In another
-
-```bash
-rosrun turtlesim turtlesim_node
-```
-
-and in last, run:
-
-```bash
-rosrun turtlesim turtle_teleop_key
-```
-
-With the last terminal active, control the turtle using arrow keys in a new window.
-
-For further instructions, refer to the official
-[ROS Wiki](https://wiki.ros.org/ROS/Tutorials)
-and
-[Example tutorials](https://github.com/ros/ros_tutorials/tree/noetic-devel)
-
-### Tests
-
-Tested with
-- above turtlebot hello world
-- packages: roscpp_tutorials and rospy_tutorials from [ros_tutorials](https://github.com/ros/ros_tutorials/tree/noetic-devel)
-
-### Quick docker tips
-
-primarily kitty/linux shortcuts
-
-Leave from container:
-
-<kbd> <br> CTRL <br> </kbd> + <kbd> <br> D <br> </kbd>
-
-Terminate an active process:
-
-<kbd> <br> CTRL <br> </kbd> + <kbd> <br> C <br> </kbd>
-
-Open a new terminal:
-
-<kbd> <br> CTRL <br> </kbd> + <kbd> <br> SHIFT <br> </kbd> + <kbd> <br> N <br> </kbd>
-
-Open a new tab:
-
-<kbd> <br> CTRL <br> </kbd> + <kbd> <br> SHIFT <br> </kbd> + <kbd> <br> T <br> </kbd>
-
-Switch tabs:
-
-<kbd> <br> CTRL <br> </kbd> + <kbd> <br> SHIFT <br> </kbd> + <kbd> <br> → <br> </kbd>
-
-or
-
-<kbd> <br> CTRL <br> </kbd> + <kbd> <br> SHIFT <br> </kbd> + <kbd> <br> ← <br> </kbd>
+This project incorporates the Kalibr library, which is governed by the [BSD License](https://github.com/ori-drs/kalibr/blob/noetic-devel/LICENSE). Therefore, the Kalibr portion of this project is also licensed under the BSD License.
 
 ### Purpose
 

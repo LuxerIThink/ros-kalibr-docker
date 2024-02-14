@@ -20,8 +20,13 @@ COPY requirements.txt .
 RUN echo "Installing python libraries..." \
     && pip3 install --no-cache-dir -r requirements.txt
 
+# Copy user files
+COPY user_files .
+# Download kalibr
+RUN cd src \
+    && git clone https://github.com/ori-drs/kalibr \
+    && cd $WORKSPACE
 # Create ros enviroment
-COPY user_files  .
 RUN echo "Building ros environment ..." \
     && . /opt/ros/$ROS_DISTRO/setup.sh \
     && catkin_make --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=On \
